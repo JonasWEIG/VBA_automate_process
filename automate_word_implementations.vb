@@ -7,8 +7,8 @@ Dim CurDt, LastAppDt As Date
 Dim WordDoc, WordApp, OutApp, OutMail As Object
 Dim WordContent As Word.Range
 
-Call Einfügen
-Call UmlauteKorrigieren
+Call Call_data
+Call correct_umlaut
 
 
 With Tabelle1
