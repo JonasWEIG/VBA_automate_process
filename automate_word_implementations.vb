@@ -51,7 +51,7 @@ With Tabelle1
                         Next CustCol
                 
                     If .Range("I3").Value = "PDF" Then
-                        FileName = "R:\WSWP\Studiendekanat\1_Studiendekanat\SQ-Module\SQ ModTool\PDFs" & "\" & .Range("E" & CustRow).Value & "_" & .Range("F" & CustRow).Value & ".pdf" 'Create full filename & Path with
+                        FileName = " path " & "\" & .Range("E" & CustRow).Value & "_" & .Range("F" & CustRow).Value & ".pdf" 'Create full filename & Path 
                         WordDoc.ExportAsFixedFormat OutputFileName:=FileName, ExportFormat:=wdExportFormatPDf
                         WordDoc.Close False
                     Else: 'If Word
@@ -68,11 +68,8 @@ With Tabelle1
                     .GetInspector.Display
                     olOldBody = .htmlBody
                     .To = Tabelle1.Range("AF" & CustRow).Value
-                    .Subject = "Anerkennung - kooperative Schlüsselqualifikationen - (PN 63931)"
-                    .htmlBody = "Sehr geehrte Frau " & Tabelle1.Range("AG" & CustRow).Value & "," & "<br><br>" & _
-                    "Anbei erhalten Sie die Bestätigung von " & Tabelle1.Range("E" & CustRow) & " " & Tabelle1.Range("F" & CustRow) & " (Matrikelnummer: " & Tabelle1.Range("G" & CustRow) & _
-                    ") über die Anerkennung extern erworbener Leistungen für das Modul kooperative Schlüsselqualifikationen (PN 63931), mit der Bitte, die Studienleistungen entsprechend zu verbuchen." _
-                    & "<br><br>" & "Herzlichen Dank und viele Grüße," & vbCrLf & olOldBody
+                    .Subject = 'Add subject
+                    .htmlBody = 'Add body
                     .Attachments.Add FileName
                     .Display 'To send without Displaying change .Display to .Send
                 End With
@@ -91,9 +88,9 @@ End With
 End Sub
 
 
-Sub Einfügen()
+Sub Call_data()
 '
-' Einfügen Makro
+' Call raw data from workbook 1
 '
     On Error GoTo PROBLEM
 '
@@ -109,15 +106,15 @@ Sub Einfügen()
     Exit Sub
     
 PROBLEM:
-    MsgBox ("Bitte alle unbeteiligten Excel Dateien schließen! Anschließend SQ - ModTool - Datei schließen und erneut öffnen.")
+    MsgBox ("Please close all uninvolved Excel files! Then close SQ - ModTool - file and open it again.")
     End
 
     
 End Sub
 
-Sub UmlauteKorrigieren()
+Sub correct_umlaut()
 '
-' UmlauteKorrigieren Makro
+' corrects german letters ä,ö,ü
 '
 
 
